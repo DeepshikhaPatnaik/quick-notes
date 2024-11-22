@@ -9,8 +9,8 @@
       </button>
     </div>
     <div  class="notesCard">
-      <span *ngFor="let arr of updatedNotesArr; let i=index" class="noteWidth">
-        <app-notes [arr]="arr"></app-notes>
+      <span *ngFor="let arr of allNotesObs$ | async; let i=index" class="noteWidth">
+        <app-notes [arr]="arr" (updatedChange)="updatedChange($event)"></app-notes>
       </span>
     </div>
   </div>

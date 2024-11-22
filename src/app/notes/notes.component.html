@@ -4,10 +4,10 @@
         <mat-card-content class="cardContent">{{cardDetails.notes}}</mat-card-content>
         <mat-card-content class="cardDate">Created on: {{cardDetails.date}}</mat-card-content>
         <mat-card-actions class="cardAction">
-            <button class="deleteButton">
+            <button class="deleteButton" (click)="deleteNote(cardDetails.id)">
                 <i class="fa-solid fa-trash"></i>
             </button>
-            <button class="updateButton">
+            <button class="updateButton" (click)="updateButton(cardDetails.id)">
                 <i class="fa-solid fa-pencil"></i>
             </button>
         </mat-card-actions>

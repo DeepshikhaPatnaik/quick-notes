@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule }  from '@angular/material/button';
@@ -6,7 +6,10 @@ import { CommonModule } from '@angular/common';
 import { MatDialog }  from '@angular/material/dialog';
 import { MatDialogRef }  from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
-import { title } from 'process';
+import { v4 as uuid } from 'uuid';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog'
+
+
 
 @Component({
   selector: 'app-modal',
@@ -16,32 +19,35 @@ import { title } from 'process';
   styleUrl: './app-modal.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppModalComponent {
+export class AppModalComponent implements OnInit{
   newTitle: string = '';
   newNote: string = '';
-  newData: {}[] = [];
+  newData: Array<{}> = [];
 
-  constructor(public dialogRef: MatDialogRef<AppModalComponent>) {}
+  constructor(public dialogRef: MatDialogRef<AppModalComponent>, @Inject(MAT_DIALOG_DATA) public data: [{title: string, notes: string}]) {}
+
+  ngOnInit() {
+    if(this.data?.length>0) {
+      this.newTitle = this.data[0].title;
+      this.newNote = this.data[0].notes;
+    }
+  }
   
   onCancel(): void {
-    console.log("onCancel")
     const dialogRef = this.dialogRef.close();
   }
 
   onSave(): void {
-    console.log("date:",new Date().toLocaleString())
-    console.log("this.newTitle:",this.newTitle)
-    console.log("this.newNote:",this.newNote)
     if (this.newTitle.length > 0 && this.newNote.length > 0) {
       this.newData.push({
         title : this.newTitle,
         notes : this.newNote,
-        date : new Date().toLocaleString()
+        date : new Date().toLocaleString(),
+        id: uuid()
       })
       alert("Data saved!");
       const dialogRef = this.dialogRef.close(this.newData);
     }
-    console.log("this.newData:",this.newData)
     this.newTitle = '';
     this.newNote = '';
   }
