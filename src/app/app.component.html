@@ -1,0 +1,21 @@
+<main class="main">
+  <div class="content">
+    <div>
+      <app-header></app-header>
+    </div>
+    <div id="addNote">
+      <button mat-fab class="setButton" (click)="openDialog()">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+    <div  class="notesCard">
+      <span *ngFor="let arr of updatedNotesArr; let i=index" class="noteWidth">
+        <app-notes [arr]="arr"></app-notes>
+      </span>
+    </div>
+  </div>
+</main>
+
+
+
+<router-outlet />

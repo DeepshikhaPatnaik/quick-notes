@@ -1,0 +1,25 @@
+
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#addNote {
+    height: 30vh;
+}
+
+.setButton {
+    margin: 3% 2%;
+    min-width: 10%;
+    height: 95%;
+}
+.notesCard {
+    margin: 5% 2%;
+    display: flex;
+}
+.noteWidth {
+    width: 20%;
+}
+
+

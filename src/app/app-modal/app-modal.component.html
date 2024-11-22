@@ -1,0 +1,17 @@
+<div class="containerSize">
+    <div mat-dialog-content class="setFormSize">
+        <mat-form-field class="setTileSize">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="newTitle">
+        </mat-form-field>
+        <mat-form-field class="setNoteSize">
+            <mat-label>Notes</mat-label>
+            <textarea matInput [(ngModel)]="newNote"></textarea>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="row">
+        <button class="col-md-6 cancelButton" mat-raised-button mat-dialog-close color="warm" (click)="onCancel()">Cancel</button>
+        <button class="col-md-6 saveButton" mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </div>
+</div>
+

@@ -1,0 +1,26 @@
+.containerSize {
+    width: 95%;
+    height: 100%;
+    margin: 2%;
+}
+
+.setFormSize {
+    width: 100%;
+    height: 80%;
+}
+.setTileSize {
+    width: 100%;
+    height: 30%;
+}
+.setNoteSize {
+    width: 100%;
+    height: 70%;
+}
+.cancelButton {
+    margin: 2%;
+    float: left;
+}
+.saveButton {
+    margin: 2%;
+    float: right;
+}
